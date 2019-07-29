@@ -3,7 +3,7 @@ import helper from '@/providers/helper'
 import globalData from '@/providers/globalData'
 
 export default {
-  created () {
+  created() {
     // 调用API从本地缓存中获取数据
     /*
      * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串

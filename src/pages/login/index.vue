@@ -28,9 +28,6 @@
 </template>
 
 <script>
-import http from '@/providers/http'
-import helper from '@/providers/helper'
-import globalData from '@/providers/globalData'
 import md5 from 'js-md5'
 
 export default {
@@ -59,7 +56,7 @@ export default {
     login () {
       if (this.validationData()) {
         this.loading = true
-        http.post('/v1/login', {
+        this.$http.post('/v1/login', {
           'client_id': 'app',
           username: this.username,
           password: md5(this.password)
@@ -73,11 +70,11 @@ export default {
       }
     },
     loginSuccess (token) {
-      globalData.username = 'test'
-      globalData.realName = '闫小军'
-      globalData.token = token
-      helper.setStorageSync('token', token)
-      helper.switchTab('../home/main')
+      this.$globalData.username = 'test'
+      this.$globalData.realName = '闫小军'
+      this.$globalData.token = token
+      this.$helper.setStorageSync('token', token)
+      this.$helper.switchTab('../home/main')
     }
   }
 }

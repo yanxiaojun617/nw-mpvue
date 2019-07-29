@@ -4,6 +4,31 @@
 import config from '@/providers/config'
 import helper from '@/providers/helper'
 
+const httpUtils = {
+  buildURLParams: (url, data) => {
+    if (!data || JSON.stringify(data) === '{}' || Array.isArray(data)) {
+      return url
+    }
+    let arr = []
+    for (let i in data) {
+      arr.push(i + '=' + encodeURIComponent(data[i]))
+    }
+    let str = arr.join('&')
+    return url + (url.lastIndexOf('?') === -1 ? '?' : '&') + str
+  },
+  useBaseApi: url => { // 使用默认api
+    const hasApi = url.indexOf('http') !== -1
+    return hasApi ? url : config.api + url
+  },
+  formatterURL: url => { // 把url中的双斜杠替换为单斜杠
+    let index = 0
+    if (url.startsWith('http')) {
+      index = 7
+    }
+    return url.substring(0, index) + url.substring(index).replace(/\/\/*/g, '/')
+  }
+}
+
 const request = function (url, data = {}, method = 'POST', config = {}) {
   mpvue.showNavigationBarLoading()
   return new Promise((resolve, reject) => {
@@ -22,10 +47,8 @@ const request = function (url, data = {}, method = 'POST', config = {}) {
       },
       fail: (err) => {
         reject(err)
-        mpvue.getNetworkType({
-          success: function (res) {
-            res.networkType === 'none' ? helper.alert('请连接网络') : helper.alert('请求失败')
-          }
+        helper.getNetworkType().then(res => {
+          res === 'none' ? helper.alert('请连接网络') : helper.alert('请求失败')
         })
       },
       complete: (res) => {
@@ -59,31 +82,6 @@ const postFormData = (url, data) => {
     // 'Authorization': 'Bearer ' + globalData.accessToken
   })
   return request(url, data, 'POST', {header})
-}
-
-const httpUtils = {
-  buildURLParams: (url, data) => {
-    if (!data || JSON.stringify(data) === '{}' || Array.isArray(data)) {
-      return url
-    }
-    let arr = []
-    for (let i in data) {
-      arr.push(i + '=' + encodeURIComponent(data[i]))
-    }
-    let str = arr.join('&')
-    return url + (url.lastIndexOf('?') === -1 ? '?' : '&') + str
-  },
-  useBaseApi: url => { // 使用默认api
-    const hasApi = url.indexOf('http') !== -1
-    return hasApi ? url : config.API + url
-  },
-  formatterURL: url => { // 把url中的双斜杠替换为单斜杠
-    let index = 0
-    if (url.startsWith('http')) {
-      index = 7
-    }
-    return url.substring(0, index) + url.substring(index).replace(/\/\/*/g, '/')
-  }
 }
 
 const http = {

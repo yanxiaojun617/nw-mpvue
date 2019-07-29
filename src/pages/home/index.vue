@@ -5,10 +5,9 @@
 </template>
 
 <script>
-import http from '@/providers/http'
 
 export default {
-  data () {
+  data() {
     return {
       show: false,
       dateTime: new Date().getTime(),
@@ -20,9 +19,11 @@ export default {
       }
     }
   },
+  created() {
+  },
   methods: {
-    test () {
-      http.get('/').then(res => {
+    test() {
+      this.$http.get('/').then(res => {
         console.log(res)
       })
     }

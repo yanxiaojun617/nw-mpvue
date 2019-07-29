@@ -11,6 +11,17 @@ const alert = function (content = '', title = '') {
   })
 }
 
+const getNetworkType = function () {
+  return new Promise((resolve, reject) => {
+    mpvue.getNetworkType({
+      success: function (res) {
+        resolve(res.networkType)
+        // res.networkType === 'none' ? this.$helper.alert('请连接网络') : this.$helper.alert('请求失败')
+      }
+    })
+  })
+}
+
 const pageTo = function (type) {
   return function (url, successFunc, failFunc, completeFunc) {
     if (!url) {
@@ -32,6 +43,7 @@ const pageTo = function (type) {
 
 const helper = {
   alert,
+  getNetworkType: getNetworkType,
   switchTab: pageTo('switchTab'),
   reLaunch: pageTo('reLaunch'),
   redirectTo: pageTo('redirectTo'),

@@ -20,7 +20,8 @@
       </van-col>
     </van-row>
     <van-popup position='bottom ' :show="show">
-      <van-datetime-picker :value="dateTime" :maxDate="maxDate" type="year-month" @cancel="show=false" @confirm="confirmDate"/>
+      <van-datetime-picker :value="dateTime" :maxDate="maxDate" type="year-month" @cancel="show=false"
+                           @confirm="confirmDate"/>
     </van-popup>
 
 
@@ -67,7 +68,7 @@ import echarts from 'echarts'
 import mpvueEcharts from 'mpvue-echarts'
 import card from '@/components/card'
 
-function initChart (canvas, width, height) {
+function initChart(canvas, width, height) {
   const chart = echarts.init(canvas, null, {
     width: width,
     height: height
@@ -124,7 +125,7 @@ export default {
       return ` ${year}年${month}月`
     }
   },
-  data () {
+  data() {
     return {
       echarts,
       onInit: initChart,
@@ -139,11 +140,11 @@ export default {
     }
   },
   methods: {
-    confirmDate (target) {
+    confirmDate(target) {
       this.dateTime = target.mp.detail
       this.show = false
     },
-    bindViewTap () {
+    bindViewTap() {
       const url = '../logs/main'
       if (mpvuePlatform === 'wx') {
         mpvue.switchTab({url})
@@ -151,13 +152,13 @@ export default {
         mpvue.navigateTo({url})
       }
     },
-    clickHandle (ev) {
+    clickHandle(ev) {
       console.log('clickHandle:', ev)
       // throw {message: 'custom test'}
     }
   },
 
-  created () {
+  created() {
     // let app = getApp()
   }
 }
@@ -169,56 +170,68 @@ export default {
   height: 400px;
   background: #aaaaaa;
 }
+
 .row {
   display: flex;
   background: gold;
+
   .left {
     background: aqua;
   }
+
   & > div {
     width: 100%;
     height: 50px;
   }
 }
+
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .userinfo-avatar {
   width: 128px;
   height: 128px;
   margin: 20px;
   border-radius: 50%;
 }
+
 .userinfo-nickname {
   color: #aaa;
 }
+
 .usermotto {
   margin-top: 150px;
 }
+
 .form-control {
   display: block;
   padding: 0 12px;
   margin-bottom: 5px;
   border: 1px solid #ccc;
 }
+
 .all {
   width: 7.5rem;
   height: 1rem;
   background-color: blue;
 }
+
 .all:after {
   display: block;
   content: '';
   clear: both;
 }
+
 .left {
   float: left;
   width: 3rem;
   height: 1rem;
   background-color: red;
 }
+
 .right {
   float: left;
   width: 4.5rem;

@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import utils from '@/providers/utils'
 import card from '@/components/card'
 
 export default {
@@ -37,13 +36,14 @@ export default {
   },
 
   created () {
+    console.log(this.$globalData)
     let logs
     if (mpvuePlatform === 'my') {
       logs = mpvue.getStorageSync({key: 'logs'}).data || []
     } else {
       logs = mpvue.getStorageSync('logs') || []
     }
-    this.logs = logs.map(log => utils.formatDate(new Date(log), 'yyyy-MM-dd HH:mm:ss'))
+    this.logs = logs.map(log => this.$utils.formatDate(new Date(log), 'yyyy-MM-dd HH:mm:ss'))
   }
 }
 </script>

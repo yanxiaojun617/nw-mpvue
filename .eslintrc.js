@@ -11,7 +11,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+  // https://github.com/standard/standard/blob/master/docs/RULES-zhcn.md
   extends: 'standard',
   // required to lint *.vue files
   plugins: [
@@ -26,6 +26,10 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'semi': 'off',
+    'indent': 'off',
+    'camelcase': 'off',
+    'space-before-function-paren': 'off',
+    'no-unused-vars': 'off',
   },
   globals: {
     App: true,
