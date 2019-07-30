@@ -1,7 +1,7 @@
 /**
  * http
  */
-import config from '@/providers/config'
+import globalData from '@/providers/globalData'
 import helper from '@/providers/helper'
 
 const httpUtils = {
@@ -18,7 +18,7 @@ const httpUtils = {
   },
   useBaseApi: url => { // 使用默认api
     const hasApi = url.indexOf('http') !== -1
-    return hasApi ? url : config.api + url
+    return hasApi ? url : globalData.config.api + url
   },
   formatterURL: url => { // 把url中的双斜杠替换为单斜杠
     let index = 0

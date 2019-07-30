@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App'
-import config from '@/providers/config'
 import utils from '@/providers/utils'
 import http from '@/providers/http'
 import helper from '@/providers/helper'
@@ -12,7 +11,6 @@ App.mpType = 'app'
 const app = new Vue(App)
 app.$mount()
 
-Vue.prototype.$config = config
 Vue.prototype.$utils = utils
 Vue.prototype.$http = http
 Vue.prototype.$helper = helper
