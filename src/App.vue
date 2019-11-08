@@ -1,3 +1,8 @@
+<style>
+page {
+  background-color: #f5f7f7;
+}
+</style>
 <script>
 import helper from '@/providers/helper'
 import globalData from '@/providers/globalData'
@@ -12,12 +17,12 @@ export default {
      * 百度：mpvue === swan, mpvuePlatform === 'swan'
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
-    const token = helper.getStorageSync('token')
-    if (!token) {
-      helper.reLaunch('./pages/login/main')
-      return
-    }
-    globalData.token = token
+    // const token = helper.getStorageSync('token')
+    // if (!token) {
+    //   helper.reLaunch('./pages/login/main')
+    //   return
+    // }
+    // globalData.token = token
   }
 }
 </script>

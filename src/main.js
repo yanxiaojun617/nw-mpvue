@@ -6,6 +6,7 @@ import helper from '@/providers/helper'
 import globalData from '@/providers/globalData'
 
 Vue.config.productionTip = false
+Vue.config.ignoredElements = [/^van-/]
 App.mpType = 'app'
 
 const app = new Vue(App)

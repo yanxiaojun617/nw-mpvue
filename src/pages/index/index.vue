@@ -19,7 +19,7 @@
         <van-field title-width="44px" label="日期：" :value="dateTimeStr" right-icon="calender-o" readonly/>
       </van-col>
     </van-row>
-    <van-popup position='bottom ' :show="show">
+    <van-popup position='bottom' :show="show">
       <van-datetime-picker :value="dateTime" :maxDate="maxDate" type="year-month" @cancel="show=false"
                            @confirm="confirmDate"/>
     </van-popup>

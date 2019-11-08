@@ -41,9 +41,20 @@ const pageTo = function (type) {
   }
 }
 
+/**
+ * 获取小程序页面传递的参数
+ * @returns {*}
+ */
+const getPageQuery = function () {
+  // eslint-disable-next-line no-undef
+  const pages = getCurrentPages()
+  const currentPage = pages[pages.length - 1]
+  return currentPage.options
+}
+
 const helper = {
   alert,
-  getNetworkType: getNetworkType,
+  getNetworkType,
   switchTab: pageTo('switchTab'),
   reLaunch: pageTo('reLaunch'),
   redirectTo: pageTo('redirectTo'),
@@ -51,6 +62,7 @@ const helper = {
   setStorageSync: mpvue.setStorageSync,
   getStorageSync: mpvue.getStorageSync,
   removeStorageSync: mpvue.removeStorageSync,
-  clearStorageSync: mpvue.clearStorageSync
+  clearStorageSync: mpvue.clearStorageSync,
+  getPageQuery
 }
 export default helper

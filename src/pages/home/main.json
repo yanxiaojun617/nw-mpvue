@@ -1,4 +1,8 @@
 {
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#221737",
+  "navigationBarTitleText": "实名制信息管理系统",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "van-row": "/static/vant/row/index",
     "van-col": "/static/vant/col/index",
